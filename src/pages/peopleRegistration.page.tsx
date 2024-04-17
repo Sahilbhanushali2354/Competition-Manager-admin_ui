@@ -30,27 +30,26 @@ const People = (props: Props) => {
   console.log(filteredUsers);
 
   const handlechange = (e: ChangeEvent<HTMLInputElement>) => {
-    let name = e.target.name;
-    let value = e.target.value;
+    const { name, value } = e.target;
+
     setFields((prevfields) => ({ ...prevfields, [name]: value }));
 
-    let _error = { ...errorMessage };
+    const generateErrorMessage = (fieldName: string, fieldValue: string) => {
+      if (!fieldValue) {
+        return `Enter ${fieldName}`;
+      } else if (fieldName === "contact" && fieldValue.length !== 10) {
+        return "Phone Number must be 10 digits";
+      } else {
+        return "";
+      }
+    };
 
-    if (
-      name === "uname" ||
-      name === "email" ||
-      name === "contact" ||
-      name === "address"
-    )
-      _error = {
-        ...errorMessage,
-        uname: name === "uname" && !value ? "Enter Username" : "",
-        email: name === "email" && !value ? "Enter Email" : "",
-        contact: name === "contact" && !value ? "Enter Phone Number" : "",
-        address: name === "address" && !value ? "Enter Address" : "",
-      };
-    setErrorMessage(_error);
+    setErrorMessage((prevError) => ({
+      ...prevError,
+      [name]: generateErrorMessage(name, value),
+    }));
   };
+
   const handleProfile = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     let { name, value } = e.target;
@@ -93,6 +92,8 @@ const People = (props: Props) => {
     }
 
     if (!fields.contact) _error = { ..._error, contact: "Enter Phone Number" };
+    else if (fields.contact.length !== 10)
+      _error = { ..._error, contact: "Enter Valid Phone Number" };
 
     if (!userProfile) {
       _error = { ..._error, profile: "Select Profile Photo" };
@@ -124,8 +125,8 @@ const People = (props: Props) => {
       setLoader(true);
       await addData();
       setFields({} as UserDTO);
-      navigate("/allpeople");
-      message.success("People Data Added Successfully");
+      navigate("/allparticipants");
+      message.success("Participant Data Added Successfully");
     } else {
       setErrorMessage(_error);
     }
@@ -159,7 +160,7 @@ const People = (props: Props) => {
           setTableData(_tableData);
           setFilteredUsers(_tableData);
           props.setIsModalOpen && props.setIsModalOpen(false);
-          message.success("People Data Updated SuccessFully");
+          message.success("Participant Updated SuccessFully");
         }
       }
     }
@@ -255,10 +256,10 @@ const People = (props: Props) => {
                     <Button
                       type="primary"
                       onClick={() => {
-                        navigate("/allpeople");
+                        navigate("/allparticipants");
                       }}
                     >
-                      Back To AllPEOPLE
+                      Back To ALL PARTICIPANTS
                     </Button>
                   </>
                 </Space>

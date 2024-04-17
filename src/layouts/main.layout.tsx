@@ -20,7 +20,6 @@ const { Header, Content, Sider } = Layout;
 
 const Mainlayout = () => {
   const navigate = useNavigate();
-  // const userlogin = useRecoilValue(UserAtom);
   useEffect(() => {
     const x = onAuthStateChanged(auth, (user) => {
       if (!user) {
@@ -42,12 +41,12 @@ const Mainlayout = () => {
       label: <Link to="/dashboard">Home</Link>,
     },
     {
-      key: "/peopleregistration",
-      label: <Link to="/peopleregistration">Register People</Link>,
+      key: "/participantregistration",
+      label: <Link to="/participantregistration">Register Participant</Link>,
     },
     {
-      key: "/allpeople",
-      label: <Link to="/allpeople">All People</Link>,
+      key: "/allparticipants",
+      label: <Link to="/allparticipants">All Participants</Link>,
     },
     {
       key: "/competition",
@@ -62,6 +61,7 @@ const Mainlayout = () => {
   const signout = () => {
     signOut(auth)
       .then(() => {
+        localStorage.clear();
         navigate("/login");
       })
       .catch((error) => {

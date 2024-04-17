@@ -2,7 +2,6 @@ import { collection, onSnapshot } from "firebase/firestore";
 import { FStore } from "../common/config/router/firebase.config";
 import { useRecoilValue } from "recoil";
 import {
-  ActiveRoundAtom,
   SelectedCompetitionAtom,
   SelectedRoundAtom,
 } from "../store/atom.store";
@@ -14,7 +13,6 @@ const Leaderboard = () => {
   const selectedCompetition = useRecoilValue(SelectedCompetitionAtom);
   const [allResponseData, setAllResponseData] = useState([]);
   const selectedRound = useRecoilValue(SelectedRoundAtom);
-  const activeRound = useRecoilValue(ActiveRoundAtom);
   const [loader, setLoader] = useState(false);
   const { id } = useParams();
   useEffect(() => {

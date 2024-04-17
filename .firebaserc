@@ -2,14 +2,4 @@
   "projects": {
     "default": "user-management-d1f7a"
   },
-  "targets": {
-    "user-management-d1f7a": {
-      "hosting": {
-        "target": [
-          "user-management-d1f7a.firebaseapp.com"
-        ]
-      }
-    }
-  },
-  "etags": {}
 }

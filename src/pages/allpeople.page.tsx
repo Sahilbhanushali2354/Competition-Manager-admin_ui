@@ -51,7 +51,7 @@ const AllPeople = () => {
       _tableData.splice(x, 1);
       setTableData(_tableData);
       setFilteredUsers(_tableData);
-      message.success("People Data Deleted Successfully");
+      message.success("Participant Data Deleted Successfully");
     }
   };
 
@@ -149,13 +149,12 @@ const AllPeople = () => {
     );
     setFilteredUsers(filtered);
   };
-
   return (
     <Spin spinning={loader}>
       <Space.Compact size="middle">
         <Input
           addonBefore={<SearchOutlined />}
-          placeholder="Search People Data"
+          placeholder="Search Participant"
           style={{ width: "400px", float: "right" }}
           onChange={handleSearchChange}
         />
@@ -175,8 +174,11 @@ const AllPeople = () => {
           disable={!!selectedRow}
         />
       </Modal>
-      <Button type="primary" onClick={() => navigate("/peopleregistration")}>
-        ADD PEOPLE
+      <Button
+        type="primary"
+        onClick={() => navigate("/participantregistration")}
+      >
+        ADD PARTICIPANT
       </Button>
     </Spin>
   );

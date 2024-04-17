@@ -16,6 +16,7 @@ import { FStore } from "../common/config/router/firebase.config";
 import Participants from "../components/participants.component";
 import Rules from "../components/rules.component";
 import LeaderBoard from "../components/leaderboard.component";
+import PresentationDetail from "../components/Presentations.component";
 
 const CompetitionTabs = () => {
   const [loader, setLoader] = useState(false);
@@ -64,6 +65,10 @@ const CompetitionTabs = () => {
     {
       id: "3",
       label: "LeaderBoard",
+    },
+    {
+      id: "4",
+      label: "Presenatations",
     },
   ];
 
@@ -194,8 +199,10 @@ const CompetitionTabs = () => {
                               <Participants />
                             ) : rounds.label === "Rules" ? (
                               <Rules />
-                            ) : (
+                            ) : rounds.label === "LeaderBoard" ? (
                               <LeaderBoard />
+                            ) : (
+                              <PresentationDetail />
                             ),
                         };
                       })}

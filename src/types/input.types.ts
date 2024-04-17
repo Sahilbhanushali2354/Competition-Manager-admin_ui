@@ -76,3 +76,16 @@ export interface FeebackDataDTO {
 export interface FeedbackErrorDTO{
 point:string
 }
+export interface PresentationDTO {
+  presentation?: string;
+  topic?: string;
+  category: string;
+  fileName?: string;
+  url?: string;
+  time?: string;
+  email?: string;
+  description?: string;
+  id?: string;
+  competitionData:CompetitionDTO;
+  roundData: RoundsDataDTO;
+}

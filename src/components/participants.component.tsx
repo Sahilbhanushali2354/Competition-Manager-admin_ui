@@ -75,10 +75,10 @@ const Participants = () => {
     )
       .then(() => {
         selectedParticipants.length > 1
-          ? message.success("People Stored SuccessFully")
+          ? message.success("Participants Stored SuccessFully")
           : selectedParticipants.length == 1
-          ? message.success("Person Stored SuccessFully")
-          : message.success("All People Removed SuccessFully");
+          ? message.success("Participant Stored SuccessFully")
+          : message.success("All Participants Removed SuccessFully");
         setLoader(false);
       })
       .catch((error) => {

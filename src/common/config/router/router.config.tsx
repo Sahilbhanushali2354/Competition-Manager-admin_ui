@@ -19,11 +19,11 @@ export const Router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: "/peopleregistration",
+        path: "/participantregistration",
         element: <People />,
       },
       {
-        path: "/allpeople",
+        path: "/allparticipants",
         element: <AllPeople />,
       },
       {
